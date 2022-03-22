@@ -8,7 +8,7 @@ struct dado
 	int status;
 };
 
-//Função Hashing Auxiliar
+//FunÃ§Ã£o Hashing Auxiliar
 int hash_aux(int k, int m)
 {
 	int h = k % m;
@@ -17,21 +17,21 @@ int hash_aux(int k, int m)
 	return h;
 }
 
-//Função Hashing Sondagem Linear
+//FunÃ§Ã£o Hashing Sondagem Linear
 int hash1(int k, int i, int m)
 {
-	int h = (hash_aux(k, m) + i) % m; //Chamando a função Auxiliar   	
+	int h = (hash_aux(k, m) + i) % m; //Chamando a funÃ§Ã£o Auxiliar   	
 	return h;
 }
 
-//Função Hashing Incersão de Dados
+//FunÃ§Ã£o Hashing IncersÃ£o de Dados
 int hash_insert(dado t[], int m, int k)
 {
 	int i = 0;
 	int j;
 	do
 	{
-		j = hash1(k, i, m);// Chamando a função Sondagem Linear
+		j = hash1(k, i, m);// Chamando a funÃ§Ã£o Sondagem Linear
 		if(t[j].status != 1)
 		{
 			t[j].k = k;
@@ -45,18 +45,18 @@ int hash_insert(dado t[], int m, int k)
 	return -1;   	
 }
 
-//Função Hashing Pesquisa
+//FunÃ§Ã£o Hashing Pesquisa
 int hash_search(dado t[], int m, int k)
 {
 	int i = 0;
 	int j;
 	do{
-		j = hash1(k, i, m);//Chamando a função Sondagem Linear
+		j = hash1(k, i, m);//Chamando a funÃ§Ã£o Sondagem Linear
 		if(t[j].k == k)
 			return j;
 		
 		i++;
-	}while(t[j].status != 0 || i < m);
+	}while(t[j].status != 0 && i < m);
 	return -1;
 }
 
@@ -66,7 +66,7 @@ int main(int argc, char** argv)
 	int m; //Tamanho da tabela
 	int c; //Auxiliar para os valores das chaves
 	int k; //Chave a sere pesquisada
-	int h; //Variável para a função Pesquisa
+	int h; //VariÃ¡vel para a funÃ§Ã£o Pesquisa
 	
 	cin >> m; //Entrando com o valor do tamanho da tabela
 
@@ -79,7 +79,7 @@ int main(int argc, char** argv)
 	
 	cin >> c; //Entrando com os valores das chaves
 	
-	//Mandando para a função Inserção de Dados
+	//Mandando para a funÃ§Ã£o InserÃ§Ã£o de Dados
 	while(c != 0)
 	{
 		hash_insert(T, m, c);
@@ -89,13 +89,13 @@ int main(int argc, char** argv)
 	//Entrando com a chave a ser procurada
 	cin >> k;
 	
-	//Mandando para a função Pesquisa
+	//Mandando para a funÃ§Ã£o Pesquisa
 	for(int i = 0; i < m; i++)
 	{
 		h = hash_search(T, m, k);
 	}
 	
-	//Saída de dados caso encontre ou não a chave pesquisada
+	//SaÃ­da de dados caso encontre ou nÃ£o a chave pesquisada
 	if(h != -1)
 		cout << "Chave " << k << " encontrada na posicao " << h << endl;
 	else
