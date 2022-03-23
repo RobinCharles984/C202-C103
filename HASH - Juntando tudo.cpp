@@ -46,7 +46,7 @@ int hash_insert(dado t[], int m, int k)
 	int j;
 	do
 	{
-		j = hash1(k, i, m);// Chamando a função Sondagem Linear
+		j = dhash(k, m, i);// Chamando a função Double Hashing
 		if(t[j].status != 1)
 		{
 			t[j].k = k;
@@ -121,7 +121,8 @@ int main(int argc, char** argv)
 		
 		case 2://Pesquisar
 			cin >> k;
-			hash_search(T, m, k);
+			cout << hash_search(T, m, k);
+			cout << endl;
 			break;
 		
 		case 3://Remover
@@ -134,6 +135,7 @@ int main(int argc, char** argv)
 			{
 				cout << T[i].k << " ";
 			}
+			cout << endl;
 			break;
 		
 		default://Sair
